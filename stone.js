@@ -1,5 +1,5 @@
 class Stone{
- constructor(x,y,width,height){
+ constructor(x,y,r){
 
     var option={
         isStatic:false,
@@ -8,12 +8,12 @@ class Stone{
         density:1.2
         
     }
-        
-    this.body = Bodies.rectangle(x, y, width, height, option);
-        this.width = width;
-        this.height = height;
-        this.image = loadImage("images/stone.png");
-        World.add(world, this.body);
+     this.x=x;
+     this.y=y;
+     this.r=r; 
+     this.image=loadImage("stone.png");  
+      this.body = Bodies.circle(this.x, this.y, this.r/2, option);
+      World.add(world, this.body);
 
  }
 
@@ -21,7 +21,8 @@ class Stone{
     push();
     translate(this.body.position.x, this.body.position.y);
     imageMode(CENTER);
-    image(this.image, 0, 0, this.width, this.height);
+    ellipseMode(RADIUS);
+    image(this.image, 0, 0,this.r*2,this.r*2);
     pop();
   }
 
